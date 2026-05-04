@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "outline-variant": "#e2bfb0",
+                      "primary": "#a04100",
+                      "on-surface-variant": "#5a4136",
+                      "primary-fixed-dim": "#ffb693",
+                      "secondary-fixed": "#e2e2e5",
+                      "surface-dim": "#efd5ca",
+                      "surface-bright": "#fff8f6",
+                      "tertiary-fixed": "#d0e4ff",
+                      "on-primary-fixed-variant": "#7a3000",
+                      "primary-container": "#ff6b00",
+                      "tertiary-fixed-dim": "#9ccaff",
+                      "on-secondary": "#ffffff",
+                      "surface-container-highest": "#f8ddd2",
+                      "secondary-fixed-dim": "#c6c6c9",
+                      "surface": "#fff8f6",
+                      "surface-tint": "#a04100",
+                      "surface-container-low": "#fff1eb",
+                      "surface-container-high": "#fee3d8",
+                      "on-tertiary-container": "#003357",
+                      "surface-container": "#ffeae1",
+                      "tertiary-container": "#059eff",
+                      "on-background": "#261812",
+                      "inverse-surface": "#3d2d26",
+                      "outline": "#8e7164",
+                      "background": "#fff8f6",
+                      "primary-fixed": "#ffdbcc",
+                      "on-primary-fixed": "#351000",
+                      "on-surface": "#261812",
+                      "error": "#ba1a1a",
+                      "on-primary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "on-secondary-fixed": "#1a1c1e",
+                      "on-secondary-container": "#636467",
+                      "inverse-on-surface": "#ffede6",
+                      "tertiary": "#0062a1",
+                      "on-tertiary": "#ffffff",
+                      "secondary-container": "#e2e2e5",
+                      "on-error": "#ffffff",
+                      "inverse-primary": "#ffb693",
+                      "on-error-container": "#93000a",
+                      "on-tertiary-fixed-variant": "#00497b",
+                      "secondary": "#5d5e61",
+                      "on-primary-container": "#572000",
+                      "on-secondary-fixed-variant": "#454749",
+                      "surface-variant": "#f8ddd2",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed": "#001d35"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "base": "8px",
+                      "lg": "24px",
+                      "gutter": "24px",
+                      "sm": "12px",
+                      "xs": "4px",
+                      "sidebar_width": "260px",
+                      "md": "16px",
+                      "xl": "32px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "body-base": ["Inter"],
+                      "title-sm": ["Inter"],
+                      "body-sm": ["Inter"]
+              },
+              "fontSize": {
+                      "display-lg": ["36px", {"lineHeight": "44px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-base": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "title-sm": ["18px", {"lineHeight": "26px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot {
+            box-shadow: 0 0 0 4px rgba(160, 65, 0, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body-base text-on-background antialiased min-h-screen">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-40 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm flex justify-between items-center px-6 py-4 lg:ml-0">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-orange-600 dark:text-orange-500 text-2xl" data-icon="menu">menu</span>
+<h1 class="font-display-lg text-headline-md text-orange-600 dark:text-orange-500 font-black">Super Menus</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-on-surface-variant font-label-caps hidden sm:block">Admin User</span>
+<div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center overflow-hidden">
+<img alt="Profile Picture" data-alt="A professional high-resolution headshot of a friendly hospitality administrator in a clean modern office setting. The lighting is soft and natural, reflecting a bright and professional atmosphere. The color palette is dominated by warm neutrals and soft oranges, consistent with a high-end corporate food service brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByGSktXm0aMpNBrBtME9cdF8-vOGphtGzLfysdnabmD1EOkz_O7jnMGPnwjsSSHkJOZ6UBZ-PgtwTnwHWwIyrngFVJt9GIoVIgDxGR5vVOCP0ocvgGy433uexBzwNhVNG6eWo495rx9QV55ImDLbgLZYBU4pKd9uyLVBeSLyfZtUSsQSq6uSmIDXjg9m8m8ogFCjk4xffQknFQ_KV4bHnHm5ee37pEmkl7HBFCrlJP7klSWb4Hp0KiQWrWa8KFCbJnSxst-T-xEAjq"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-20 px-4 md:px-8 max-w-4xl mx-auto">
+<!-- Progress Stepper -->
+<nav class="mb-12">
+<div class="flex items-center justify-between relative">
+<!-- Connector Line -->
+<div class="absolute top-1/2 left-0 w-full h-0.5 bg-secondary-container -translate-y-1/2 z-0"></div>
+<div class="absolute top-1/2 left-0 w-1/3 h-0.5 bg-primary -translate-y-1/2 z-0"></div>
+<!-- Step 1: Active -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center font-bold active-dot">1</div>
+<span class="font-label-caps text-primary">Basic Info</span>
+</div>
+<!-- Step 2: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold">2</div>
+<span class="font-label-caps text-secondary">Menu</span>
+</div>
+<!-- Step 3: Pending -->
+<div class="relative z-10 flex flex-col items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-bold">3</div>
+<span class="font-label-caps text-secondary">Delivery</span>
+</div>
+</div>
+</nav>
+<!-- Form Card -->
+<div class="bg-white rounded-xl shadow-[0_4px_12px_rgba(26,28,30,0.06)] border border-slate-100 overflow-hidden">
+<div class="p-8 border-b border-slate-100 bg-slate-50/50">
+<h2 class="font-headline-md text-display-lg text-on-background">Create Restaurant Profile</h2>
+<p class="text-body-sm text-on-surface-variant mt-2">Start by providing the essential details for your establishment to get listed on the platform.</p>
+</div>
+<div class="p-8">
+<form class="space-y-8">
+<!-- Form Section: Identity -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant ml-1" for="restaurant_name">Restaurant Name</label>
+<input class="w-full bg-surface-container-low border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="restaurant_name" placeholder="e.g. The Golden Bistro" type="text"/>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant ml-1" for="cuisine_type">Cuisine Type</label>
+<select class="w-full bg-surface-container-low border border-slate-200 rounded-lg px-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none appearance-none" id="cuisine_type">
+<option disabled="" selected="" value="">Select Cuisine</option>
+<option value="italian">Italian</option>
+<option value="japanese">Japanese</option>
+<option value="mexican">Mexican</option>
+<option value="mediterranean">Mediterranean</option>
+<option value="american">American</option>
+</select>
+</div>
+</div>
+<!-- Form Section: Contact -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant ml-1" for="contact_number">Contact Number</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="phone">phone</span>
+<input class="w-full bg-surface-container-low border border-slate-200 rounded-lg pl-10 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="contact_number" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant ml-1" for="email">Business Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" data-icon="mail">mail</span>
+<input class="w-full bg-surface-container-low border border-slate-200 rounded-lg pl-10 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none" id="email" placeholder="owner@restaurant.com" type="email"/>
+</div>
+</div>
+</div>
+<!-- Form Section: Address -->
+<div class="space-y-xs">
+<label class="font-label-caps text-on-surface-variant ml-1" for="address">Physical Address</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-4 text-slate-400" data-icon="location_on">location_on</span>
+<textarea class="w-full bg-surface-container-low border border-slate-200 rounded-lg pl-10 pr-4 py-3 focus:ring-2 focus:ring-primary focus:border-primary transition-all outline-none resize-none" id="address" placeholder="Street name, Building, Floor..." rows="3"></textarea>
+</div>
+</div>
+<!-- Map Preview Placeholder -->
+<div class="w-full h-48 rounded-xl bg-slate-100 relative overflow-hidden group">
+<img class="w-full h-full object-cover opacity-80" data-alt="A clean and detailed digital map graphic showing a modern metropolitan city grid. The map features a minimalist UI aesthetic with soft muted colors, highlighting major thoroughfares in light gray. A prominent orange location pin is placed centrally, signifying a restaurant location. The style is professional, crisp, and high-tech, fitting for a premium hospitality management dashboard." data-location="San Francisco" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9TuqmYY7PKy4a5LcBdNSoo4lhr0DO9fStjqzDmviPtyI5n5GwylhkLsXZbpCmXOoxFGV4IZwc-6hvhJ2YTV7WHDKY1161wY72cVJXxcBm9HG7REEUhMnd7mkW5ZD2NB3ULUlqlbb_h02O5nsN3e-B8Fy_f5Y2N_GrUmUyLVHokLIvIOjqS56wpLGvnx4vxwoR4P5iU6N05rmifMD21mO_ekQzG2WCGCDhID_rEQZo3Qsko4wF5aAkDb8i55MQDgHvL87ufGxYNL03"/>
+<div class="absolute inset-0 bg-slate-900/10 flex items-center justify-center">
+<div class="bg-white/90 backdrop-blur px-4 py-2 rounded-full flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-primary" data-icon="map">map</span>
+<span class="font-label-caps text-on-surface">Confirm Location on Map</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center justify-end pt-6 gap-4">
+<button class="px-8 py-3 rounded-lg font-title-sm text-secondary hover:bg-slate-50 transition-colors active:scale-95 duration-150" type="button">
+                            Cancel
+                        </button>
+<button class="bg-primary text-on-primary px-10 py-3 rounded-lg font-title-sm flex items-center gap-2 hover:bg-primary/90 shadow-md active:scale-95 duration-150 transition-all" type="button">
+                            Next
+                            <span class="material-symbols-outlined" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50 rounded-t-2xl">
+<div class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-xl px-3 py-1 scale-110 transition-transform">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[11px] font-medium font-inter">Home</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="text-[11px] font-medium font-inter">Orders</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-medium font-inter">Users</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-[11px] font-medium font-inter">More</span>
+</div>
+</nav>
+<!-- Footer (Web) -->
+<footer class="w-full py-12 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 hidden md:block">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col gap-2">
+<span class="font-bold text-slate-900 dark:text-white">Super Menus Hospitality</span>
+<p class="text-sm text-slate-500 font-inter">© 2024 Super Menus Hospitality. All rights reserved.</p>
+</div>
+<div class="flex gap-8">
+<a class="text-sm text-slate-500 hover:text-orange-500 transition-colors font-inter" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-orange-500 transition-colors font-inter" href="#">Terms of Service</a>
+<a class="text-sm text-slate-500 hover:text-orange-500 transition-colors font-inter" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>

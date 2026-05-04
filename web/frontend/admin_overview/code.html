@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline-variant": "#e2bfb0",
+                        "primary": "#a04100",
+                        "on-surface-variant": "#5a4136",
+                        "primary-fixed-dim": "#ffb693",
+                        "secondary-fixed": "#e2e2e5",
+                        "surface-dim": "#efd5ca",
+                        "surface-bright": "#fff8f6",
+                        "tertiary-fixed": "#d0e4ff",
+                        "on-primary-fixed-variant": "#7a3000",
+                        "primary-container": "#ff6b00",
+                        "tertiary-fixed-dim": "#9ccaff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-highest": "#f8ddd2",
+                        "secondary-fixed-dim": "#c6c6c9",
+                        "surface": "#fff8f6",
+                        "surface-tint": "#a04100",
+                        "surface-container-low": "#fff1eb",
+                        "surface-container-high": "#fee3d8",
+                        "on-tertiary-container": "#003357",
+                        "surface-container": "#ffeae1",
+                        "tertiary-container": "#059eff",
+                        "on-background": "#261812",
+                        "inverse-surface": "#3d2d26",
+                        "outline": "#8e7164",
+                        "background": "#fff8f6",
+                        "primary-fixed": "#ffdbcc",
+                        "on-primary-fixed": "#351000",
+                        "on-surface": "#261812",
+                        "error": "#ba1a1a",
+                        "on-primary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-secondary-fixed": "#1a1c1e",
+                        "on-secondary-container": "#636467",
+                        "inverse-on-surface": "#ffede6",
+                        "tertiary": "#0062a1",
+                        "on-tertiary": "#ffffff",
+                        "secondary-container": "#e2e2e5",
+                        "on-error": "#ffffff",
+                        "inverse-primary": "#ffb693",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#00497b",
+                        "secondary": "#5d5e61",
+                        "on-primary-container": "#572000",
+                        "on-secondary-fixed-variant": "#454749",
+                        "surface-variant": "#f8ddd2",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#001d35"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "base": "8px",
+                        "lg": "24px",
+                        "gutter": "24px",
+                        "sm": "12px",
+                        "xs": "4px",
+                        "sidebar_width": "260px",
+                        "md": "16px",
+                        "xl": "32px"
+                    },
+                    "fontFamily": {
+                        "display-lg": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "body-base": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "body-sm": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased">
+<!-- NavigationDrawer (Shell Component) -->
+<aside class="hidden lg:flex flex-col h-screen bg-slate-950 text-orange-500 font-inter antialiased h-full w-64 fixed left-0 top-0 border-r border-slate-800 shadow-xl z-50">
+<div class="px-6 py-8">
+<span class="text-orange-500 font-bold text-xl">Super Menus</span>
+<div class="mt-8 flex items-center gap-3">
+<div class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center overflow-hidden border border-slate-700">
+<img alt="Admin User" data-alt="A professional close-up studio portrait of a modern hospitality executive. The lighting is soft and cinematic, casting gentle shadows across a clean, minimalist background. The individual is wearing professional attire, and the overall color tone is warm and inviting, consistent with a high-end corporate management platform aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDT0oj4WvEKJmHRrxjkAV0gUjg9z9uAa5mTF0_cn4FqgiKu7J9VLJv9-FBmeLaXBEem3gYs9lQqAYHAspx38cWgKQrbbbFMQ5chDo40Zn-qdx0I_TsiZL7eZwx-JyDM_7PQBMQev61uEZGa7rPb9h0wJ2R2mR6VqVwCCRUMUDoGfDQIZku-dNcrlzNeCRMLNlASskiBLTs0Wxy_qtH7Y-zLGicNr3bDsRoBULBA2OK0eE15l0gMBNb_vDsifpP7VxkULPN3pVkCTAX9"/>
+</div>
+<div>
+<p class="text-sm font-bold text-white leading-none">Super Menus</p>
+<p class="text-xs text-slate-500 mt-1">Hospitality Admin</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 mt-4">
+<a class="flex items-center gap-3 px-4 py-3 text-white border-l-4 border-orange-500 bg-slate-900 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-medium">Overview</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-900 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-medium">Orders</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-900 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="group">group</span>
+<span class="font-medium">Customers</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-900 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="storefront">storefront</span>
+<span class="font-medium">Restaurants</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-slate-400 hover:text-white hover:bg-slate-900 transition-colors active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-medium">Settings</span>
+</a>
+</nav>
+</aside>
+<!-- TopAppBar (Shell Component) -->
+<header class="fixed top-0 w-full z-40 bg-white dark:bg-slate-900 border-b border-slate-100 dark:border-slate-800 shadow-sm flex justify-between items-center px-6 py-4 lg:ml-64 lg:w-[calc(100%-16rem)]">
+<div class="flex items-center gap-4">
+<button class="lg:hidden p-2 text-slate-600">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-inter text-sm font-semibold text-orange-600 dark:text-orange-500 uppercase tracking-wider">Dashboard Overview</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-slate-50 dark:bg-slate-800 rounded-full text-slate-500">
+<span class="material-symbols-outlined text-sm" data-icon="calendar_today">calendar_today</span>
+<span class="text-xs font-medium">Oct 24, 2024</span>
+</div>
+<div class="w-8 h-8 rounded-full bg-orange-100 flex items-center justify-center text-orange-600 font-bold text-xs ring-2 ring-white">
+                JS
+            </div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-24 lg:pb-12 lg:ml-64 min-h-screen px-6 lg:px-12 bg-surface">
+<div class="max-w-7xl mx-auto space-y-8">
+<!-- Header Section -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<h2 class="font-display-lg text-display-lg text-on-surface">Overview Analytics</h2>
+<p class="text-on-surface-variant font-body-base mt-1">Real-time performance tracking for all hospitality units.</p>
+</div>
+<div class="flex gap-3">
+<button class="px-4 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-body-sm font-semibold hover:bg-surface-container transition-colors">
+                        Export Report
+                    </button>
+<button class="px-4 py-2 rounded-lg bg-primary-container text-white font-body-sm font-semibold shadow-md hover:opacity-90 active:scale-95 transition-all">
+                        Refresh Data
+                    </button>
+</div>
+</div>
+<!-- Metric Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Revenue Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-orange-50 rounded-lg text-orange-600">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+</div>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+12.5%</span>
+</div>
+<div class="mt-4">
+<p class="text-on-surface-variant font-label-caps uppercase">Total Revenue</p>
+<h3 class="text-headline-md font-headline-md text-on-surface mt-1">$128,430</h3>
+</div>
+</div>
+<!-- Orders Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-blue-50 rounded-lg text-blue-600">
+<span class="material-symbols-outlined" data-icon="shopping_bag">shopping_bag</span>
+</div>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">+5.2%</span>
+</div>
+<div class="mt-4">
+<p class="text-on-surface-variant font-label-caps uppercase">Active Orders</p>
+<h3 class="text-headline-md font-headline-md text-on-surface mt-1">45</h3>
+</div>
+</div>
+<!-- Customers Card -->
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-slate-100 shadow-sm flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<div class="p-2 bg-purple-50 rounded-lg text-purple-600">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+</div>
+<span class="text-xs font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-full">+8 New</span>
+</div>
+<div class="mt-4">
+<p class="text-on-surface-variant font-label-caps uppercase">New Customers</p>
+<h3 class="text-headline-md font-headline-md text-on-surface mt-1">12</h3>
+</div>
+</div>
+</div>
+<!-- Revenue Area Chart Section -->
+<div class="bg-surface-container-lowest p-8 rounded-2xl border border-slate-100 shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-title-sm font-title-sm text-on-surface">Revenue Over Time</h4>
+<p class="text-body-sm text-on-surface-variant">Daily gross revenue across all connected restaurants.</p>
+</div>
+<select class="bg-slate-50 border-none rounded-lg text-body-sm font-medium focus:ring-2 focus:ring-primary">
+<option>Last 7 Days</option>
+<option>Last 30 Days</option>
+</select>
+</div>
+<div class="h-[300px] w-full relative">
+<!-- SVG Chart Representation -->
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 800 300">
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="5%" stop-color="#ff6b00" stop-opacity="0.2"></stop>
+<stop offset="95%" stop-color="#ff6b00" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Grid Lines -->
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="50" y2="50"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="125" y2="125"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="200" y2="200"></line>
+<line stroke="#f1f5f9" stroke-width="1" x1="0" x2="800" y1="275" y2="275"></line>
+<!-- Area -->
+<path d="M0,275 L100,220 L200,240 L300,180 L400,200 L500,120 L600,150 L700,80 L800,100 L800,300 L0,300 Z" fill="url(#chartGradient)"></path>
+<!-- Line -->
+<path d="M0,275 L100,220 L200,240 L300,180 L400,200 L500,120 L600,150 L700,80 L800,100" fill="none" stroke="#ff6b00" stroke-linecap="round" stroke-linejoin="round" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="700" cy="80" fill="#ff6b00" r="6" stroke="white" stroke-width="2"></circle>
+</svg>
+<!-- Tooltip Simulation -->
+<div class="absolute top-[40px] left-[680px] bg-slate-900 text-white p-2 rounded shadow-lg text-xs font-bold">
+                        $18,420
+                    </div>
+</div>
+<div class="flex justify-between mt-4 text-body-sm text-slate-400 font-medium">
+<span>Mon</span>
+<span>Tue</span>
+<span>Wed</span>
+<span>Thu</span>
+<span>Fri</span>
+<span>Sat</span>
+<span>Sun</span>
+</div>
+</div>
+<!-- Bottom Section: Top Restaurants -->
+<div class="grid grid-cols-1 lg:grid-cols-1 gap-6">
+<div class="bg-surface-container-lowest rounded-2xl border border-slate-100 shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-50 flex items-center justify-between">
+<h4 class="text-title-sm font-title-sm text-on-surface">Top Performing Restaurants</h4>
+<button class="text-primary font-body-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 text-on-surface-variant text-label-caps uppercase">
+<tr>
+<th class="px-6 py-4">Restaurant</th>
+<th class="px-6 py-4">Orders</th>
+<th class="px-6 py-4">Revenue</th>
+<th class="px-6 py-4">Growth</th>
+<th class="px-6 py-4">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-50">
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-slate-100">
+<img alt="The Burger Joint" data-alt="A professional high-fidelity photograph of a modern, stylish burger restaurant interior. The setting features warm ambient lighting, natural wood textures, and a vibrant, appetizing atmosphere. The camera focus is sharp on a signature gourmet burger served on a clean plate, reflecting the high standards and quality of a top-performing food establishment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV40VjOaYJC5v7YH17IzSgWLLkrIRxcclKzpc6LDB2cBJ3r3WnihnYavx4FTXd9MP9VcVIR5FRQmNbPqXVLjJMpHLUF1YgJ4YvlhSK1lDN2JojvbK1JlQ_sNmoJUy1IvQXXAw4u0eSp315sOvtbV2tZgHWheK8-RZaJCG7eNnSjV3m33uU0jIJPCccm_bL6wfC5sVPa5kjVUB49icM6IDByITvuEcoJiMwM4BpQQqHi7gvzXTVwZsWDxBXvzYQ4pHSMfD1tUE1671f"/>
+</div>
+<span class="font-body-base font-semibold text-on-surface">The Burger Joint</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">1,240</td>
+<td class="px-6 py-4 text-body-sm font-bold text-on-surface">$24,500</td>
+<td class="px-6 py-4 text-body-sm text-emerald-600 font-semibold">+18.2%</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-emerald-100 text-emerald-700 text-[10px] font-bold rounded-full uppercase">Top Tier</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-slate-100">
+<img alt="Pizza Paradiso" data-alt="A vibrant and professional shot of a busy artisanal pizza kitchen. The lighting is bright and warm, showcasing a stone-fired oven in the background and a fresh, colorful pizza being prepared with premium ingredients. The aesthetic is modern and high-quality, representing a successful restaurant brand with a focus on craft and freshness." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDUAuScCb1pziJZKV5qiNko9dVQKzXEW-4DgftAw1FdSGKX18GUtzniyiBkxtTI1-MWF-UrNdWFaKR19G2rj2gsIHjM2UHY8FdOsFKVf--r0loHGE9DLv5hOIQHbSjkIBB4S5bW30e1v1p9dCQuYWxoFo48jF_7Vdto39Z9LXElEqlQwVLNueFTh0JShIIfyWklV_W4N8sx97bAibA7RwML_X-ow12CfwUfL9Ai2xVQKYH7zYT1uGz2pFCrL4xs8NwtDQJAkLwSijwl"/>
+</div>
+<span class="font-body-base font-semibold text-on-surface">Pizza Paradiso</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">980</td>
+<td class="px-6 py-4 text-body-sm font-bold text-on-surface">$19,200</td>
+<td class="px-6 py-4 text-body-sm text-emerald-600 font-semibold">+12.4%</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-blue-100 text-blue-700 text-[10px] font-bold rounded-full uppercase">Steady</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg overflow-hidden bg-slate-100">
+<img alt="Sushi Zen" data-alt="A clean, minimalist high-key photograph of a contemporary Japanese sushi bar. The lighting is soft and even, highlighting the meticulous presentation of a fresh sushi platter on a slate board. The visual style is elegant and sophisticated, emphasizing the premium nature and high-level performance of the restaurant." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3p_LDLyHRPOkaAeh_NB-JjZjPmg3FywR8g7kGBtDN07alI_qkLtRsHvGmFnqZrk-ny_FKQglumsqoet7YztypMynbX3DafXixgkN8w-3s_UlideV-M8gR7PltmrXxjcI_13bOSFrIpAub0uh2-YjfXSp2_lsn806f_IiabR3D2nSunbTXyNmQQmC_G7e0z1ezMCRXe3TZEN4nIKQvyYw-BEDZx7TC6bCSDk9cEmJPRiQrq5aRHl4ufattfD1h-gBeeRT_kNAWN-TK"/>
+</div>
+<span class="font-body-base font-semibold text-on-surface">Sushi Zen</span>
+</div>
+</td>
+<td class="px-6 py-4 text-body-sm text-on-surface-variant">750</td>
+<td class="px-6 py-4 text-body-sm font-bold text-on-surface">$22,100</td>
+<td class="px-6 py-4 text-body-sm text-orange-600 font-semibold">-2.1%</td>
+<td class="px-6 py-4">
+<span class="px-2 py-1 bg-orange-100 text-orange-700 text-[10px] font-bold rounded-full uppercase">Reviewing</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Shell Component) -->
+<nav class="lg:hidden fixed bottom-0 left-0 w-full flex justify-around items-center px-4 py-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 shadow-[0_-4px_10px_rgba(0,0,0,0.05)] z-50 rounded-t-2xl">
+<a class="flex flex-col items-center justify-center text-orange-600 dark:text-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-xl px-3 py-1 scale-110 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="text-[11px] font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="list_alt">list_alt</span>
+<span class="text-[11px] font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[11px] font-medium">Users</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 hover:text-orange-400 transition-transform" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="text-[11px] font-medium">More</span>
+</a>
+</nav>
+<!-- Footer (Shell Component) -->
+<footer class="w-full py-12 bg-slate-50 dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 lg:ml-64 lg:w-[calc(100%-16rem)]">
+<div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col items-center md:items-start">
+<span class="font-bold text-slate-900 dark:text-white mb-2">Super Menus</span>
+<p class="text-sm text-slate-500 text-center md:text-left">© 2024 Super Menus Hospitality. All rights reserved.</p>
+</div>
+<div class="flex gap-6">
+<a class="text-sm text-slate-500 hover:text-orange-500 opacity-100" href="#">Privacy Policy</a>
+<a class="text-sm text-slate-500 hover:text-orange-500 opacity-100" href="#">Terms of Service</a>
+<a class="text-sm text-slate-500 hover:text-orange-500 opacity-100" href="#">Contact Support</a>
+</div>
+</div>
+</footer>
+</body></html>
