@@ -1,5 +1,5 @@
 import { config } from 'dotenv';
-import { email } from 'zod';
+import { any, email } from 'zod';
 
 config();
 
@@ -15,7 +15,10 @@ export const env = {
     EMAIL_PASS: process.env.EMAIL_PASS as string,
     EMAIL_SCURE: process.env.EMAIL_SECURE as string,
     EMAIL_SERVICE: process.env.EMAIL_SERVICE as string,
-    EMAIL_PORT: process.env.EMAIL_PORT
+    EMAIL_PORT: process.env.EMAIL_PORT,
+    TWILIO_ACOUNT_SID: process.env.TWILIO_ACOUNT_SID as string,
+    TWILIO_OAUTH_TOKEN: process.env.TWILIO_OAUTH_TOKEN as string,
+    TWILIO_PHONE_NUMBER: process.env.TWILIO_PHONE_NUMBER
 
 };
 
@@ -35,7 +38,10 @@ if (!env.JWT_REFRESH_SECRET) {
 if (!env.JWT_REFRESH_EXPIRES_IN) {
     throw new Error('JWT_REFRESH_EXPIRES_IN is not set');
 }
-if(!env.EMAIL_PASS||!env.EMAIL_USER){
+if (!env.EMAIL_PASS || !env.EMAIL_USER) {
     throw new Error('Some essential email variables are missing ');
 }
+if (!env.TWILIO_ACOUNT_SID) throw new Error('some env values are missing')
+if (!env.TWILIO_OAUTH_TOKEN) throw new Error('some env values are missing')
+if (!env.TWILIO_PHONE_NUMBER) throw new Error('some env values are missing')
 
