@@ -11,7 +11,7 @@ const orderDeriverySchema = new mongoose.Schema({
         unique: true
     },
     delivered:{
-        type: boolean,
+        type: Boolean,
         required: false
     },
     deliveredAt:{

@@ -128,6 +128,17 @@ export const sendWeeklyAnalytics = async (
   });
 };
 
+export const sendPaymentComfirmation = async(to:string,restaurantName: string,restaurantAdmin: string,amount: string)=>{
+  return sendEmail({
+    to,
+    subject:`Payment comfirmation for ${restaurantName} restaurant`,
+    html:`<div style="font-family: Arial;">
+     <h2>Payment comfirmation</h2>
+     <p>Dear ${restaurantAdmin}</p>
+     <p>Your payment of <pre>${amount}</pre> was recieved</p>
+     `
+  })
 
-export default { sendWeeklyAnalytics, sendNewOrderNotification, sendPaymentReminderNotifications, sendEmail, sendWelcomeMail }
+}
+export default { sendWeeklyAnalytics, sendNewOrderNotification, sendPaymentReminderNotifications, sendEmail, sendWelcomeMail,sendPaymentComfirmation }
 

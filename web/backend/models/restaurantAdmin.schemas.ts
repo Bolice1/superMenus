@@ -4,30 +4,30 @@ import { email, string } from "zod";
 
 export const restaurantAdminSchema = new mongoose.Schema({
     firstName: {
-        type: string,
+        type: String,
         required: true,
         unique: false
     },
     lastName: {
-        type: string,
+        type: String,
         required: true,
         unique: false
     },
     email: {
-        type: email,
+        type: String,
         required: true,
         unique: true
     },
     phoneNumber: {
-        type: string,
+        type: String,
         required: true,
         unique: true
     },
     restaurant: {
 
-        name: [mongoose.Schema.Types.ObjectId],
-        id: [mongoose.Schema.Types.ObjectId],
-        website: [mongoose.Schema.Types.ObjectId],
+        name: { type: [mongoose.Schema.Types.ObjectId], ref: 'Restaurant' },
+        id: { type: [mongoose.Schema.Types.ObjectId], ref: 'Restaurant' },
+        website: { type: [mongoose.Schema.Types.ObjectId], ref: 'Restaurant' },
         required: true,
         unique: true
 
@@ -36,6 +36,6 @@ export const restaurantAdminSchema = new mongoose.Schema({
 
 });
 
-const RestaurantAdmin = mongoose.model('RestaurantAdmin',restaurantAdminSchema);
+const RestaurantAdmin = mongoose.model('RestaurantAdmin', restaurantAdminSchema);
 
 export default RestaurantAdmin;
