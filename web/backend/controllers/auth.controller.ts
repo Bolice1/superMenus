@@ -1,7 +1,8 @@
 import Restaurant from '../models/restaurant.schema';
 import { Request, Response } from 'express';
-import { request } from 'node:http';
-import { email } from 'zod';
+import jwt from 'jsonwebtoken'
+import Customer from '../models/customer.schema';
+import bcrypt from 'bcrypt'
 
 // export const register = async (req: Request, res: Response) => {
 //     // let us register new restaurant 
@@ -196,4 +197,31 @@ export const getAllRestaurants = async (req: Request, res: Response) => {
         return res.status(500).json({ msg: "something went wrong" })
     }
 
+}
+
+export const loginCustomer = async (req: Request, res: Response) => {
+    try {
+
+        const { email, password } = req.body;
+        if (!email || !password) return res.status(400).json({ msg: "All fields are required" })
+        const account = Customer.findOne({ email });
+        if (!account) return res.status(400).json({ error: "user not found!" })
+
+    } catch (error) {
+        return res.status(500).json({ msg: "Something went wrong" })
+    }
+}
+
+export const registerCustomer = async (req: Request, res: Response) => {
+    try {
+
+        const { email, password, firstName, lastName, phoneNumber } = req.body;
+        if (!email || !password || !firstName || !lastName || !phoneNumber) return res.status(400).json({ msg: "All the fields are required" })
+        
+        const existingUser = Customer.findOne(email);
+        if(!existingUser) return res.status(400).json({msg:""})
+
+    } catch (error) {
+        console.error("Error occurred while registering customer")
+    }
 }
