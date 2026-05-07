@@ -37,7 +37,6 @@ export const paymentReminderEmail= async (req: Request, res: Response) => {
 
 export const sentPaymentComfirmation = async(req: Request,res: Response)=>{
     const {email,restaurantAdmin,restaurantName} = req.body;
-    const amount = 
 }
 
 export const sendNewOrder = async(req: Request,res: Response)=>{

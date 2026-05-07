@@ -51,11 +51,6 @@ const itemSchema = new mongoose.Schema({
         type: Boolean,
         required: false,
         default: false,
-    },
-    isActive: {
-        type: Boolean,
-        required: false,
-        default: true,
     },  
     isFeatured: {
         type: Boolean,

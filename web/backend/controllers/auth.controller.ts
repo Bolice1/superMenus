@@ -1,5 +1,6 @@
 import Restaurant from '../models/restaurant.schema';
 import { Request, Response } from 'express';
+import { request } from 'node:http';
 import { email } from 'zod';
 
 // export const register = async (req: Request, res: Response) => {
@@ -165,6 +166,34 @@ export const updateRestaurant = async (req: Request, res: Response) => {
 
 
     } catch (error) {
+        console.error({ msg: `Error:${error}` })
         return res.status(500).json({ msg: "something went wrong" })
     }
+}
+
+export const deleteRestaurant = async (req: Request, res: Response) => {
+
+    try {
+        const { emailAddress } = req.body.restaurant;
+        const deledRestaurant = await Restaurant.findOneAndDelete(emailAddress);
+        if (!deledRestaurant) return res.status(429).json({ msg: "Restaurant not found" })
+
+    } catch (error) {
+        console.error(`Error: ${error}`)
+        return res.status(500).json({ msg: "something went wrong" })
+    }
+
+}
+
+export const getAllRestaurants = async (req: Request, res: Response) => {
+    try {
+        const allRestaurants = await Restaurant.find({});
+        if ((allRestaurants).length == 0) return res.status(200).json({ msg: "No restaurants registered" })
+        return res.status(200).json({ msg: `${allRestaurants}` });
+
+    } catch (error) {
+        console.error(`Error: ${error}`)
+        return res.status(500).json({ msg: "something went wrong" })
+    }
+
 }
