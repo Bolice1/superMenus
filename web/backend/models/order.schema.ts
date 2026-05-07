@@ -16,14 +16,11 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    status: {
-        type: String,
-        required: true,
-        enum: ['pending', 'confirmed', 'delivered', 'cancelled'],
-    },
+
     orderDate: {
         type: Date,
         required: true,
+        default: new Date()
     },
     orderTime: {
         type: Date,
@@ -38,6 +35,7 @@ const orderSchema = new mongoose.Schema({
         type: String,
         required: true,
         enum: ['pending', 'confirmed', 'delivered', 'cancelled'],
+        default: "pending"
     },
 });
 

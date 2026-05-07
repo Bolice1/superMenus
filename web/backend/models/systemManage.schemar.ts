@@ -4,22 +4,22 @@ import { string } from "zod";
 export const managerSchema = new mongoose.Schema({
 
     firstName: {
-        type: string,
+        type: String,
         required: true,
         unique: true
     },
     lastName: {
-        type: string,
+        type: String,
         required: true,
         unique: true
     },
     email: {
-        type: string,
+        type: String,
         required: true,
         unique: true
     },
     phoneNumber: {
-        type: string,
+        type: String,
         required: true,
         unique: true
     }
