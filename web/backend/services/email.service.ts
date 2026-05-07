@@ -128,3 +128,5 @@ export const sendPaymentReminderNotifications = async (
   };
 
 
+  export default {sendWeeklyAnalytics,sendNewOrderNotification,sendPaymentReminderNotifications,sendEmail,sendWelcomeMail}
+
