@@ -1,5 +1,8 @@
 {
   "devDependencies": {
     "@types/express": "^5.0.6"
+  },
+  "dependencies": {
+    "node-cron": "^4.2.1"
   }
 }

@@ -72,7 +72,7 @@ export const register = async (req: Request, res: Response) => {
         })
         await newRestaurant.save();
         // let us send email 
-        const restaurantAdmin:any = RestaurantAdmin.findOne(newRestaurant.id)
+        const restaurantAdmin:any = RestaurantAdmin.findOne(email)
         await sendWelcomeMail(emailAddress,name,restaurantAdmin)
     } catch (error) {
         console.error(error)

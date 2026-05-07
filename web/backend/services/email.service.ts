@@ -30,16 +30,16 @@ const sendEmail = async (options: {
 };
 
 export const sendPaymentReminderNotifications = async (
-    to: string,
-    name: string,
-    deadline: Date,
-    amount: number,
-    bankInfo: string
-  ) => {
-    return sendEmail({
-      to,
-      subject: 'Payment Reminder - superMenus',
-      html: `
+  to: string,
+  name: string,
+  deadline: Date,
+  amount: number,
+  bankInfo: string
+) => {
+  return sendEmail({
+    to,
+    subject: 'Payment Reminder - superMenus',
+    html: `
         <div style="font-family: Arial, sans-serif; color: #000;">
           <h2>Hello ${name},</h2>
           <p>
@@ -55,18 +55,18 @@ export const sendPaymentReminderNotifications = async (
           <p style="color: green;"><strong>superMenus</strong></p>
         </div>
       `,
-    });
-  };
+  });
+};
 
-  export const sendWelcomeMail = async (
-    to: string,
-    restaurantName: string,
-    restaurantAdmin: string
-  ) => {
-    return sendEmail({
-      to,
-      subject: `Welcome to superMenus, ${restaurantName}!`,
-      html: `
+export const sendWelcomeMail = async (
+  to: string,
+  restaurantName: string,
+  restaurantAdmin: string
+) => {
+  return sendEmail({
+    to,
+    subject: `Welcome to superMenus, ${restaurantName}!`,
+    html: `
         <div style="font-family: Arial, sans-serif;">
           <h2>Hello ${restaurantAdmin},</h2>
           <p>
@@ -85,48 +85,49 @@ export const sendPaymentReminderNotifications = async (
           <p>We’re excited to have you onboard </p>
         </div>
       `,
-    });
-  };
+  });
+};
 
-  export const sendNewOrderNotification = async (
-    to: string,
-    restaurantName: string,
-    orderInfo: string
-  ) => {
-    return sendEmail({
-      to,
-      subject: 'New Order Received 🍞',
-      html: `
+export const sendNewOrderNotification = async (
+  to: string,
+  restaurantName: string,
+  orderInfo: string
+) => {
+  return sendEmail({
+    to,
+    subject: 'New Order Received 🍞',
+    html: `
         <div style="font-family: Arial;">
           <h2>Dear ${restaurantName},</h2>
           <p>You have received a new order:</p>
           <pre>${orderInfo}</pre>
         </div>
       `,
-    });
-  };
+  });
+};
 
 
-  export const sendWeeklyAnalytics = async (
-    to: string,
-    analytics: string,
-    restaurantName: string,
-    restaurantAdmin: string
-  ) => {
-    return sendEmail({
-      to,
-      subject: `Weekly Analytics - ${restaurantName}`,
-      html: `
+export const sendWeeklyAnalytics = async (
+  to: string,
+  analytics: string,
+  restaurantName: string,
+  restaurantAdmin: string
+) => {
+  return sendEmail({
+    to,
+    subject: `Weekly Analytics - ${restaurantName}`,
+    html: `
         <div style="font-family: Arial;">
-          <p>Dear ${restaurantAdmin},</p>
           <h2>Weekly Analytics Report</h2>
+
+          <p>Dear ${restaurantAdmin},</p>
           <p>Here is your performance summary for <strong>${restaurantName}</strong>:</p>
           <pre>${analytics}</pre>
         </div>
       `,
-    });
-  };
+  });
+};
 
 
-  export default {sendWeeklyAnalytics,sendNewOrderNotification,sendPaymentReminderNotifications,sendEmail,sendWelcomeMail}
+export default { sendWeeklyAnalytics, sendNewOrderNotification, sendPaymentReminderNotifications, sendEmail, sendWelcomeMail }
 
