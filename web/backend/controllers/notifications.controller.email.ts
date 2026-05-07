@@ -1,3 +1,4 @@
+
 import Customer from "../models/customer.schema";
 import SendmailTransport from "nodemailer/lib/sendmail-transport";
 import { sendNewOrderNotification, sendPaymentReminderNotifications, sendPaymentComfirmation, sendWeeklyAnalytics, sendWelcomeMail } from "../services/email.service";
@@ -18,7 +19,7 @@ export const sendWelcomeE_Mail = async (req: Request, res: Response) => {
     // let us call it here 
 }
 
-export const paymentReminderEmail= async (req: Request, res: Response) => {
+export const paymentReminderEmail = async (req: Request, res: Response) => {
     try {
         const { to,
             name,
@@ -35,14 +36,21 @@ export const paymentReminderEmail= async (req: Request, res: Response) => {
     }
 }
 
-export const sentPaymentComfirmation = async(req: Request,res: Response)=>{
-    const {email,restaurantAdmin,restaurantName} = req.body;
+export const sentPaymentComfirmation = async (req: Request, res: Response) => {
+    const { email, restaurantAdmin, restaurantName } = req.body;
 }
 
-export const sendNewOrder = async(req: Request,res: Response)=>{
-    try{
+export const sendNewOrder = async (req: Request, res: Response) => {
+    try {
+        // let us send it 
+        const { email, restaurantName, restaurantAdmin } = req.body.restaurant;
+        const orderInfo = req.body;
+        if (!email || !restaurantAdmin || restaurantName) return res.status(400).json({ msg: "All the fieldsa are required" })
+        if (!orderInfo) return res.status(400).json({ msg: "Order info is a mandatory field" })
+        sendNewOrderNotification(email, restaurantName, orderInfo)
 
-    }catch(error){
-        return res.status(500).json({msg:"Something went wrong while sending the confirmation email"})
+    } catch (error) {
+        return res.status(500).json({ msg: "Something went wrong while sending the confirmation email" })
     }
 }
+

@@ -4,42 +4,42 @@ import cron from 'node-cron';
 import OrderDelivery from "../models/orderDelivery.schema";
 
 export const takeAnOrder/* register an order */ = async (req: Request, res: Response) => {
-    const orderInfo = req.body;
-    if (!orderInfo.totalAmount || !orderInfo || !orderInfo.orderItems) return res.status(400).json({ msg: "Some essentials are missing" })
+  const orderInfo = req.body;
+  if (!orderInfo.totalAmount || !orderInfo || !orderInfo.orderItems) return res.status(400).json({ msg: "Some essentials are missing" })
 }
 
 export const orderStatus = async (req: Request, res: Response) => {
-    /* the restaurant admin can make an order as comfirmed,pending,delivered,cancelled*/
-    const { orderStatus, orderId } = req.body;
-    if (!orderStatus) return res.status(400).json({ msg: "No status selected" });
-    try {
-        // let us check if the  order exists /* and  */
-        // let us save the updated order 
+  /* the restaurant admin can make an order as comfirmed,pending,delivered,cancelled*/
+  const { orderStatus, orderId } = req.body;
+  if (!orderStatus) return res.status(400).json({ msg: "No status selected" });
+  try {
+    // let us check if the  order exists /* and  */
+    // let us save the updated order 
 
-        const updatedOrder = await Order.findByIdAndUpdate(orderId);
-        if (!updatedOrder) return res.status(400).json({ msg: "Order not found!" })
+    const updatedOrder = await Order.findByIdAndUpdate(orderId);
+    if (!updatedOrder) return res.status(400).json({ msg: "Order not found!" })
 
 
 
-    } catch (error) {
-        return res.status(500).json({ msg: "something went wrong" })
-    }
+  } catch (error) {
+    return res.status(500).json({ msg: "something went wrong" })
+  }
 }
 
 export const deleteAnOrder = async (req: Request, res: Response) => {
-    /*only restaurantAdmin or order owner is able to delete an order */
+  /*only restaurantAdmin or order owner is able to delete an order */
 
 
 
 
-    const { orderId } = req.body;
-    try {
-        const deletedOrder = await Order.findByIdAndDelete(orderId);
-        if (!deletedOrder) return res.status(400).json({ msg: "Order not found" })
+  const { orderId } = req.body;
+  try {
+    const deletedOrder = await Order.findByIdAndDelete(orderId);
+    if (!deletedOrder) return res.status(400).json({ msg: "Order not found" })
 
-    } catch (error) {
-        return res.status(500).json({ msg: "Something went wrong while deleting the order" })
-    }
+  } catch (error) {
+    return res.status(500).json({ msg: "Something went wrong while deleting the order" })
+  }
 }
 
 // export const deleteOrdersAutomatically = async (req: Request, res: Response) => {
@@ -89,4 +89,23 @@ export const deleteOrdersAutomatically = async (req: Request, res: Response) => 
   }
 };
 
-export default { takeAnOrder };
+export const updateOrderById = async (req: Request, res: Response) => {
+  try {
+    const { orderId } = req.body;
+    const orderExistsAndUpdated = Order.findByIdAndUpdate(orderId)
+    if (!orderExistsAndUpdated) return res.status(400).json({ msg: "something went wrong" })
+    return res.status(200).json({ msg: "order updated successfully" })
+  } catch (error) {
+    console.error(`Error: ${error}`)
+    return res.status(500).json({ msg: "something went wrong" })
+  }
+}
+
+export const getOrderById = async (req: Request, res: Response) => {
+  const orderId = req.body.order.id;
+  // does the order exists
+  const orderExists = Order.findById(orderId);
+  if (!orderExists) return res.status(404).json({ msg: "The requested order does not exist" })
+  return res.status(200).json({ orderExists })
+}
+export default { takeAnOrder,getOrderById };
