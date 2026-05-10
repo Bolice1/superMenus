@@ -3,26 +3,37 @@ import { email, string } from "zod";
 
 const customerSchema = new mongoose.Schema({
     firstName: {
-        type: string,
+        type: String,
         required: true,
         unique: false
     },
     lastName: {
-        type: string,
+        type: String,
         required: true,
         unique: false
     },
-    email:{
+    userName: {
+        type: String,
+        required: true,
+        unique: true
+    }
+    ,
+    email: {
         type: email,
         required: true,
         unique: true
     },
-    phoneNumber:{
-        type: string,
+    phoneNumber: {
+        type: String,
         required: true,
         unique: true,
+    },
+    password: {
+        type: String,
+        required: true,
+        unique: false,
     }
 });
 
-const Customer = mongoose.model('Customer',customerSchema);
+const Customer = mongoose.model('Customer', customerSchema);
 export default Customer;

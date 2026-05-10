@@ -128,7 +128,7 @@ export const sendWeeklyAnalytics = async (
   });
 };
 
-export const sendPaymentComfirmation = async(to:string,restaurantName: string,restaurantAdmin: string,amount: string)=>{
+export const sendPaymentComfirmation = async(to:string,restaurantName: string,restaurantAdmin: string,amount: any)=>{
   return sendEmail({
     to,
     subject:`Payment comfirmation for ${restaurantName} restaurant`,
