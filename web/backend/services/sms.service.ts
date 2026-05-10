@@ -17,7 +17,7 @@ export const sendWelcomeSms = async (to: string, from: string, restaurantName: s
 
 export const sendPaymentReminderNotifications = async (to: string, from: string, amount: string) => {
     const message = await client.messages.create({
-        body: `🎗️Payment reminder \nHello we want to inform you that the payment time \n of ${amount}is approaching`,
+        body: `Payment reminder \nHello we want to inform you that the payment time \n of ${amount}is approaching`,
         to,
         from,
     });
