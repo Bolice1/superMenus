@@ -1,47 +1,54 @@
-import mongoose from "mongoose";
-import strict from "node:assert/strict";
-import { any, boolean, number } from "zod";
+import mongoose, { Document, Schema } from "mongoose";
 
-export const financeSchema = new mongoose.Schema({
-    restaurantId: {
-        type: [mongoose.Schema.Types.ObjectId],
+export interface IFinance extends Document {
+    restaurantId: mongoose.Types.ObjectId;
+    restaurantAdminId: mongoose.Types.ObjectId;
+    paymentStatus: boolean;
+    paid: number;
+    remaining: number;
+    deadline: Date;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
+const financeSchema = new Schema<IFinance>(
+    {
+        restaurantId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Restaurant',
+            required: true,
+            index: true,
+        },
+        restaurantAdminId: {
+            type: Schema.Types.ObjectId,
+            ref: 'RestaurantAdmin',
+            required: true,
+        },
+        paymentStatus: {
+            type: Boolean,
+            required: true,
+            default: false,
+        },
+        paid: {
+            type: Number,
+            required: true,
+            default: 0,
+            min: 0,
+        },
+        remaining: {
+            type: Number,
+            required: true,
+            default: 1000,
+            min: 0,
+        },
+        deadline: {
+            type: Date,
+            required: true,
+            default: () => new Date(Date.now() + 30 * 24 * 60 * 60 * 1000), // 30 days from now
+        },
     },
-    restaurantAdmin: {
-        type: [mongoose.Schema.Types.ObjectId]
-    },
-    paymentStatus: {
-        type: Boolean,
-        required: true,
-        default: false,
-        unique: false
+    { timestamps: true }
+);
 
-    },
-    paid: {
-        type: Number,
-        required: true,
-        default: 0,
-        unique: false
-    },
-    remaining: {
-        type: Number,
-        required: true,
-        unique: false,
-        default: 1000,
-
-    },
-    deadline: {
-        type: Date,
-        required: false,
-        unique: false,
-        default: new Date()
-
-    }
-
-
-
-
-});
-
-const Finance = mongoose.model('Finance', financeSchema);
+const Finance = mongoose.model<IFinance>('Finance', financeSchema);
 export default Finance;

@@ -1,30 +1,48 @@
-import mongoose from "mongoose";
-import { string } from "zod";
+import mongoose, { Document, Schema } from "mongoose";
 
-export const managerSchema = new mongoose.Schema({
+export interface ISystemManager extends Document {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    role: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
 
-    firstName: {
-        type: String,
-        required: true,
-        unique: true
+export const managerSchema = new Schema<ISystemManager>(
+    {
+        firstName: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        lastName: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            match: /.+\@.+\..+/,
+        },
+        phoneNumber: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        role: {
+            type: String,
+            required: true,
+            enum: ['admin', 'manager', 'support'],
+            default: 'manager',
+        },
     },
-    lastName: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    phoneNumber: {
-        type: String,
-        required: true,
-        unique: true
-    }
+    { timestamps: true }
+);
 
-});
-
-const Manager = mongoose.model('Manager',managerSchema);
+const Manager = mongoose.model<ISystemManager>('Manager', managerSchema);
 export default Manager;

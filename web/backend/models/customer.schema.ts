@@ -1,27 +1,40 @@
 import mongoose from "mongoose";
-import { email, string } from "zod";
+import { Document, Schema } from "mongoose";
 
-const customerSchema = new mongoose.Schema({
+export interface ICustomer extends Document {
+    firstName: string;
+    lastName: string;
+    userName: string;
+    email: string;
+    phoneNumber: string;
+    password: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+const customerSchema = new Schema<ICustomer>({
     firstName: {
         type: String,
         required: true,
-        unique: false
+        trim: true,
     },
     lastName: {
         type: String,
         required: true,
-        unique: false
+        trim: true,
     },
     userName: {
         type: String,
         required: true,
-        unique: true
-    }
-    ,
+        unique: true,
+        trim: true,
+    },
     email: {
-        type: email,
+        type: String,
         required: true,
-        unique: true
+        unique: true,
+        lowercase: true,
+        match: /.+\@.+\..+/,
     },
     phoneNumber: {
         type: String,
@@ -31,9 +44,8 @@ const customerSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
-        unique: false,
     }
-});
+}, { timestamps: true });
 
-const Customer = mongoose.model('Customer', customerSchema);
+const Customer = mongoose.model<ICustomer>('Customer', customerSchema);
 export default Customer;

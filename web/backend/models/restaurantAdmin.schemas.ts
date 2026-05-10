@@ -1,41 +1,49 @@
-import mongoose from "mongoose";
-import { email, string } from "zod";
-// we are going to define the restaurant admin schema 
+import mongoose, { Document, Schema } from "mongoose";
 
-export const restaurantAdminSchema = new mongoose.Schema({
-    firstName: {
-        type: String,
-        required: true,
-        unique: false
+export interface IRestaurantAdmin extends Document {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phoneNumber: string;
+    restaurantId: mongoose.Types.ObjectId;
+    createdAt: Date;
+    updatedAt: Date;
+}
+
+export const restaurantAdminSchema = new Schema<IRestaurantAdmin>(
+    {
+        firstName: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        lastName: {
+            type: String,
+            required: true,
+            trim: true,
+        },
+        email: {
+            type: String,
+            required: true,
+            unique: true,
+            lowercase: true,
+            match: /.+\@.+\..+/,
+        },
+        phoneNumber: {
+            type: String,
+            required: true,
+            unique: true,
+        },
+        restaurantId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Restaurant',
+            required: true,
+            index: true,
+        },
     },
-    lastName: {
-        type: String,
-        required: true,
-        unique: false
-    },
-    email: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    phoneNumber: {
-        type: String,
-        required: true,
-        unique: true
-    },
-    restaurant: {
+    { timestamps: true }
+);
 
-        name: { type: [mongoose.Schema.Types.ObjectId], ref: 'Restaurant' },
-        id: { type: [mongoose.Schema.Types.ObjectId], ref: 'Restaurant' },
-        website: { type: [mongoose.Schema.Types.ObjectId], ref: 'Restaurant' },
-        required: true,
-        unique: true
-
-
-    }
-
-});
-
-const RestaurantAdmin = mongoose.model('RestaurantAdmin', restaurantAdminSchema);
+const RestaurantAdmin = mongoose.model<IRestaurantAdmin>('RestaurantAdmin', restaurantAdminSchema);
 
 export default RestaurantAdmin;

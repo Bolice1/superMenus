@@ -83,7 +83,6 @@ export const sendNewOrder = async (req: Request, res: Response) => {
 export const send_weeklyAnalytics = async (req: Request, res: Response) => {
     try {
 
-       // sendWeeklyAnalytics(to, restaurantName, restaurantAdminSchema, analytics)
 
     } catch (error) {
         console.log(`Error: \n${error}`)

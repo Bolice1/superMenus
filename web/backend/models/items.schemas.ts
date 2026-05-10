@@ -1,78 +1,92 @@
-import mongoose from "mongoose";
+import mongoose, { Document, Schema } from "mongoose";
 
-// we are going to define the items schema for the database for the restaurant where a restaurant admin can add new items depending on what they have or what they do not have , admin can update the item status as available or not available
-const itemSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-    },
-    description: {
-        type: String,
-        required: true,
-    },
-    price: {
-        type: Number,
-        required: true,
-    },
-    status: {
-        type: String,
-        required: true,
-        enum: ['available', 'not available'],
-    },
-    restaurantId: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Restaurant',
-        required: true,
-    },
-    category: {
-        type: String,
-        required: true,
-        enum: ['breakfast', 'lunch', 'dinner', 'dessert', 'drink'],
-    },
-    image: {
-        type: String,
-        required: true,
-    },
-    createdAt: {
-        type: Date,
-        required: true,
-        default: Date.now,
-    },
-    updatedAt: {
-        type: Date,
-        required: true,
-        default: Date.now,
-    },
-    deletedAt: {
-        type: Date,
-        required: false,
-    },
-    isDeleted: {
-        type: Boolean,
-        required: false,
-        default: false,
-    },  
-    isFeatured: {
-        type: Boolean,
-        required: false,
-        default: false,
-    },
-    isPopular: {
-        type: Boolean,
-        required: false,
-        default: false,
-    },
-    isNew: {
-        type: Boolean,
-        required: false,
-        default: false,
-    },
-    isBestSeller: {
-        type: Boolean,
-        required: false,
-        default: false,
-    },  
-});
+export interface IItem extends Document {
+    name: string;
+    description: string;
+    price: number;
+    status: 'available' | 'not available';
+    restaurantId: mongoose.Types.ObjectId;
+    category: 'breakfast' | 'lunch' | 'dinner' | 'dessert' | 'drink';
+    image: string;
+    createdAt: Date;
+    updatedAt: Date;
+    deletedAt?: Date;
+    isDeleted: boolean;
+    isFeatured: boolean;
+    isPopular: boolean;
+    isNewArrival: boolean; 
+    isBestSeller: boolean;
+}
 
-const Item = mongoose.model('Item', itemSchema);
+const itemSchema = new Schema<IItem>(
+    {
+        name: {
+            type: String,
+            required: true,
+            trim: true,
+            index: true,
+        },
+        description: {
+            type: String,
+            required: true,
+        },
+        price: {
+            type: Number,
+            required: true,
+            min: 0,
+        },
+        status: {
+            type: String,
+            required: true,
+            enum: ['available', 'not available'],
+            default: 'available',
+        },
+        restaurantId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Restaurant',
+            required: true,
+            index: true,
+        },
+        category: {
+            type: String,
+            required: true,
+            enum: ['breakfast', 'lunch', 'dinner', 'dessert', 'drink'],
+        },
+        image: {
+            type: String,
+            required: true,
+        },
+        deletedAt: {
+            type: Date,
+            default: null,
+        },
+        isDeleted: {
+            type: Boolean,
+            default: false,
+            index: true,
+        },
+        isFeatured: {
+            type: Boolean,
+            default: false,
+        },
+        isPopular: {
+            type: Boolean,
+            default: false,
+        },
+        isNewArrival: { 
+            type: Boolean,
+            default: false,
+        },
+        isBestSeller: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    { timestamps: true }
+);
+
+itemSchema.index({ restaurantId: 1, isDeleted: 1 });
+itemSchema.index({ restaurantId: 1, category: 1, isDeleted: 1 });
+
+const Item = mongoose.model<IItem>('Item', itemSchema);
 export default Item;
