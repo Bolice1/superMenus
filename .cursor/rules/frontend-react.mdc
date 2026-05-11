@@ -1,0 +1,12 @@
+---
+description: superMenus clients — React web, Expo RN mobile, Electron desktop
+globs: web/frontend/admin/**/*,mobile/superMenus/**/*,desktop/**/*
+alwaysApply: false
+---
+
+# Frontend stack
+
+- The **live web frontend** is **React** (Vite, TypeScript, React Router) in `web/frontend/admin/`.
+- **Mobile** is **React Native (Expo + expo-router)** in `mobile/superMenus/` — customer flows, API via `lib/api.ts` and `app.json` → `expo.extra.apiUrl` (or `EXPO_PUBLIC_API_URL`).
+- **Desktop** is **Electron** in `desktop/` — loads the Vite admin URL (`ADMIN_WEB_URL`, default `http://localhost:5173`). Run `web/frontend/admin` dev server, then `npm run dev` from `desktop/`.
+- Folders like `web/frontend/login/`, `web/frontend/admin_overview/`, etc. contain **static HTML + Tailwind prototypes** for layout and visuals only—mirror them in the React app or RN screens, not as the primary runtime for product UI.

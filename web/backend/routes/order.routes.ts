@@ -5,12 +5,15 @@ import {
     deleteAnOrder,
     getOrderById,
     updateOrderById,
-    deleteOrdersAutomatically
+    deleteOrdersAutomatically,
+    listOrders,
 } from '../controllers/order.controller';
 
 const router: Router = express.Router();
 
 router.post('/create', takeAnOrder);
+
+router.get('/list', listOrders);
 
 router.get('/get/:orderId', getOrderById);
 router.post('/get', getOrderById);

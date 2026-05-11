@@ -1,8 +1,12 @@
 import express from 'express';
 import routes from './routes';
+import corsMiddleware from './middleware/cors.middleware';
+import rateLimitMiddleware from './middleware/rate_limit.middleware';
 
 const app = express();
 
+app.use(corsMiddleware);
+app.use(rateLimitMiddleware);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

@@ -3,10 +3,13 @@ import {
     createItem,
     deleteItemById,
     deleteAllItems,
-    updateItem
+    updateItem,
+    listItemsByRestaurant,
 } from '../controllers/items.controllet';
 
 const router: Router = express.Router();
+
+router.get('/restaurant/:restaurantId', listItemsByRestaurant);
 
 router.post('/create', createItem);
 

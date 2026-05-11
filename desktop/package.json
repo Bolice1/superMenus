@@ -1,0 +1,15 @@
+{
+  "name": "supermenus-desktop",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Electron shell for the Super Menus web admin (React + Vite).",
+  "main": "main.cjs",
+  "scripts": {
+    "start": "electron .",
+    "dev": "cross-env ADMIN_WEB_URL=http://localhost:5173 electron ."
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "electron": "^34.2.0"
+  }
+}

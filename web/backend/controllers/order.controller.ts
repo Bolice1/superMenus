@@ -185,15 +185,53 @@ export const deleteAnOrder = async (req: Request, res: Response) => {
 };
 
 export const getOrderById = async (req: Request, res: Response) => {
-  const { orderId } = req.body;
+  const orderId =
+    (req.params as { orderId?: string }).orderId || (req.body as { orderId?: string })?.orderId;
+
+  if (!orderId) {
+    return res.status(400).json({ msg: "orderId is required" });
+  }
 
   try {
-    const orderExists = await Order.findById(orderId);
+    const orderExists = await Order.findById(orderId)
+      .populate("userId", "firstName lastName email userName")
+      .populate("restaurantId", "name emailAddress")
+      .populate("orderItems");
     if (!orderExists) return res.status(404).json({ msg: "The requested order does not exist" });
 
     return res.status(200).json({ order: orderExists });
   } catch (error) {
     return res.status(500).json({ msg: "Something went wrong finding the order" });
+  }
+};
+
+export const listOrders = async (req: Request, res: Response) => {
+  try {
+    const { restaurantId, page = "1", limit = "25", orderStatus, userId } = req.query;
+    const filter: Record<string, unknown> = {};
+    if (restaurantId) filter.restaurantId = restaurantId;
+    if (orderStatus) filter.orderStatus = orderStatus;
+    if (userId) filter.userId = userId;
+
+    const pageNum = Math.max(1, parseInt(page as string, 10) || 1);
+    const limitNum = Math.min(100, Math.max(1, parseInt(limit as string, 10) || 25));
+    const skip = (pageNum - 1) * limitNum;
+
+    const [orders, total] = await Promise.all([
+      Order.find(filter)
+        .sort({ createdAt: -1 })
+        .skip(skip)
+        .limit(limitNum)
+        .populate("userId", "firstName lastName email userName")
+        .populate("restaurantId", "name emailAddress")
+        .populate("orderItems"),
+      Order.countDocuments(filter),
+    ]);
+
+    return res.status(200).json({ orders, total, page: pageNum, limit: limitNum });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ msg: "Something went wrong while listing orders" });
   }
 };
 
@@ -248,6 +286,7 @@ export const deleteOrdersAutomatically = async (req: Request, res: Response) => 
 export default {
   takeAnOrder,
   getOrderById,
+  listOrders,
   orderStatus,
   deleteAnOrder,
   updateOrderById,

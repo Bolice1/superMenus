@@ -69,6 +69,21 @@ export const deleteAllItems = async (req: Request, res: Response) => {
     }
 };
 
+export const listItemsByRestaurant = async (req: Request, res: Response) => {
+    try {
+        const { restaurantId } = req.params;
+        if (!restaurantId) {
+            return res.status(400).json({ msg: "Restaurant ID is required" });
+        }
+
+        const items = await Item.find({ restaurantId }).sort({ createdAt: -1 });
+        return res.status(200).json({ items });
+    } catch (error) {
+        console.error(`Error in listItemsByRestaurant: ${error}`);
+        return res.status(500).json({ msg: "Something went wrong while listing items" });
+    }
+};
+
 export const updateItem = async (req: Request, res: Response) => {
     try {
         const itemData = req.body.item || {};
